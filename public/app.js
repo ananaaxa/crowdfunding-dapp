@@ -657,7 +657,6 @@ async function loadProjects() {
             }
 
             const projectCard = `
-                ${!isCompleted && approvers.includes(currentAddress.toLowerCase()) ? `<button class="btn btn-info" onclick="approveProject(${i})">Approve</button>` : ""}
                 <div class="col-md-4">
                     <div class="project-card">
                         <h5>${project[1]} (Project ID: ${i})</h5>
@@ -666,6 +665,7 @@ async function loadProjects() {
                         <p><strong>Raised:</strong> ${raisedAmount} wei</p>
                         <p><strong>Deadline:</strong> ${deadline}</p>
                         ${contributeElement}
+						${!isCompleted && approvers.includes(currentAddress.toLowerCase()) ? `<button class="btn btn-info" onclick="approveProject(${i})">Approve</button>` : ""}
                         ${isCompleted ? '<span class="badge bg-success">Completed</span>' : ""}
                         ${!isCompleted && isExpired ? '<span class="badge bg-danger">Expired</span>' : ""}
                         ${!isCompleted && isExpired && userContribution > 0 ? `<button class="btn btn-warning" onclick="refund(${i})">Refund</button>` : ""}
